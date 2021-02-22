@@ -1,0 +1,48 @@
+﻿
+@model List<WebApplicationTest.Models.Genre>
+
+
+@using (Html.BeginForm("LstMenu", "Genres", FormMethod.Post))
+{
+    <select id="id_genre" name="id_genre" class="form-control">
+        <option value="value" selected>-- select genre --</option>
+        @{
+            for (int i = 0; i < Model.Count; i++)
+            {
+                <option value="@Model[i].Id_genre">@Model[i].Name_genre</option>
+            }
+        }
+    </select>
+    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon glyphicon-search" aria-hidden="true"></span></button>
+}
+
+<div class="custom-control custom-checkbox custom-control-inline">
+    <input type="checkbox" class="custom-control-input" id="defaultInline1" onclick="myFunction()">
+    <label class="custom-control-label" for="defaultInline1">par ordre alphabetique</label>
+</div>
+
+<script>
+    function myFunction() {
+        var checkBox = document.getElementById("defaultInline1");
+        var elmt = document.getElementById("alphabet");
+        if (checkBox.checked == true) {
+            elmt.style.display = "block";
+        } else {
+            elmt.style.display = "none";
+        }
+    }
+</script>
+
+    <div class="shadowbox" id="alphabet" role="group" style="display:none">
+        @{
+            char[] tab = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                                      'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+                                      'U', 'V', 'W', 'X','Y','Z' };
+            for (int i = 0; i < tab.Length; i++)
+            {
+                <a id="letter" onclick="location.href='@Url.Action("GetArtistByFirstCaracter", "Artists", new { id_letter = tab[i] })'" class="btn btn-outline-primary" role="button" title="Letter">@tab[i]</a>
+            }
+        }
+    </div>
+
+

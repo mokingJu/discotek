@@ -1,0 +1,123 @@
+
+body{
+	font-family: "Open Sans", sans-serif;
+	background-color: #e3e3e3;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar-wrapper .navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+  width: auto;
+}
+
+#site-logo{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 50px;
+}
+
+  /* RESPONSIVE CSS
+-------------------------------------------------- */
+/*@media (min-width: 768px) {
+  /* Navbar positioning foo */
+
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 4px; /* The navbar becomes detached from the top, so we round the corners */
+  }/*
+
+
+  /* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 650px;
+  margin-bottom: 60px;
+}
+.carousel-caption {
+  z-index: 10; /* Since positioning the image, we need to help out the caption */
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 650px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 650px;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.img-circle{
+    background-color: #DDD;
+    border: 5px solid #cfd8dc;
+}
+
+.shadowbox {
+    width: 15em;
+    border: 1px solid #333;
+    box-shadow: 8px 8px 5px #444;
+    padding: 8px 12px;
+    background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+}
+#letter{
+    font-size:12px;
+    text-align:center;
+    font-family:'Book Antiqua';
+    font-weight:bold;
+    border-color:black;
+}
+
+/*-----------------footer------------------*/
+footer{
+margin-bottom: 10px;
+}
+
+

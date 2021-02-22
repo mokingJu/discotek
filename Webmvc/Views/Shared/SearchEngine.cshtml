@@ -1,0 +1,71 @@
+﻿
+<html>
+<body>
+    <div>
+        @using (Html.BeginForm("Search", "Albums"))
+        {
+            <form class="navbar-form navbar-left" role="search">
+                <div class="input-group">
+                    <input type="text" id="textsearch" class="form-control" />
+                    <button type="submit" id="actbutton" class="btn btn-primary" onclick="sendfunct()"><span class="glyphicon glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+                <input type="text" id="result" name="testvar" hidden/>
+            </form>
+        }
+    </div>
+    <div class="panel-body" id="panel">
+        <table class="table table-bordered" id="table">
+            <tr>
+                <th></th>
+            </tr>
+            @{foreach (var item in ViewBag.result)
+                {
+            <tr class="search">
+                <td data-id="@item.Id_artist">@item.Name_artist</td>
+            </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $("#panel").hide();
+        $("#textsearch").on("keyup", function () {
+            $("#panel").slideDown("fast");
+            var textenter = $("#textsearch").val().toLowerCase();
+            $("table tr").each(function (results) {
+                if (results !== 0) {
+                    var id = $(this).find("td").text();
+                    if (id.indexOf(textenter) !== 0 && id.toLowerCase().indexOf(textenter.toLowerCase()) < 0) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                }
+            });
+        });
+
+        $("#textsearch").on("keyup", function () {
+            if ($(this).val() == '') {
+                $("#panel").hide();
+                $("table tr").hide();
+            }
+        });
+
+        $("tr td").each(function () {
+            $(this).on("click", function () {
+                foo = $(this).text();
+                fo = $(this).data("id")
+                $("#textsearch").val(foo);
+                $("#panel").hide();
+            });
+        });
+
+        function sendfunct() {            
+            document.getElementById("result").value = fo;
+        }
+    </script>
+</body>
+</html> 

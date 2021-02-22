@@ -1,0 +1,42 @@
+﻿@model List<WebApplicationTest.Models.Album>
+
+<h1>@ViewBag.Title</h1>
+
+<div class="row">
+    @{
+        foreach (var elemt in Model)
+        {
+            <div class="col-md-4">
+                <div class="card" style="height:300px">
+                    <a href="single.html"><img src="data:image;base64,@System.Convert.ToBase64String(elemt.Cover_album, 0, elemt.Cover_album.Length)" title="allbum-name"></a>
+                    <div class="card-body">
+                        <div class="form-inline">
+                            @{ foreach (var item in ViewBag.Dico)
+                                {
+                                    if (elemt.Id_artist == item.Key)
+                                    {
+                                        <label>@item.Value -</label>
+                                        break;
+                                    }
+                                }
+                            }
+                            <small>@elemt.Name_album</small>
+                        </div>
+                        @{
+                            int myDate = DateTime.Parse(elemt.DateRelease.ToString()).Year;
+                        }
+                        <small>Date of release (@myDate)</small>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                @Html.ActionLink("Listen", "GetSoundtracksAlbumFromAPI", "Soundtracks", new { id_album = elemt.Id_album }, new { @class = "btn btn-primary" })
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>
+                            </div>
+                            <small class="text-muted">@elemt.Duration_album</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+

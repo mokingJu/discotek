@@ -1,0 +1,17 @@
+﻿@model List<WebApplicationTest.Models.Artist>
+
+@{
+    ViewBag.Title = "GetArtistByFirstCaracter";
+}
+
+<h2>GetArtistByFirstCaracter</h2>
+
+@foreach (var item in ViewBag.items)
+{
+    <div>
+        <ul>
+            <li id="id_artist" name="id_artist"><a href="@Url.Action("AbumsByArtist", "Albums", new{ id_artist=item.Value })">@item.Key</a></li>
+        </ul>
+    </div>
+}
+

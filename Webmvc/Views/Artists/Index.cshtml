@@ -1,0 +1,22 @@
+﻿@model List<WebApplicationTest.Models.Artist>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Artists</h2>
+
+
+@using (Html.BeginForm("AbumsByArtist", "Albums", FormMethod.Post))
+{
+    foreach (var el in Model)
+    {
+        <div>
+            <ul>
+                <li id="id_artist" name="id_artist"><a href="@Url.Action("AbumsByArtist", "Albums", new{ id_artist=el.Id_artist })">@el.Name_artist</a></li>
+            </ul>
+        </div>
+    }
+ }
+
+

@@ -1,0 +1,82 @@
+﻿@model List<WebApplicationTest.Models.Album>
+
+@{
+    ViewBag.Title = "AllAlbums";
+}
+
+<h2>Albums</h2>
+
+
+<div class="row">
+    @{
+        for (int j = 0; j < Model.Count(); j++)
+        {
+            <div class="col-md-4">
+                <div class="card" style="height:300px">
+                    <a href="single.html"><img src="data:image;base64,@System.Convert.ToBase64String(Model[j].Cover_album, 0, Model[j].Cover_album.Length)" title="allbum-name"></a>
+                    <div class="card-body">
+                        <div class="form-inline">
+                            @{ foreach (var item in ViewBag.Dico)
+                                {
+                                    if (Model[j].Id_artist == item.Key)
+                                    {
+                                        <label>@item.Value -</label>
+                                        break;
+                                    }
+                                }
+                            }
+                            <small>@Model[j].Name_album</small>
+                        </div>
+                        @{
+                            int myDate = DateTime.Parse(Model[j].DateRelease.ToString()).Year;
+                        }
+                        <small>Date of release (@myDate)</small>
+
+
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                @Html.ActionLink("Listen", "GetSoundtracksAlbumFromAPI", "Soundtracks", new { id_album = Model[j].Id_album }, new { @class = "btn btn-primary" })
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>
+                            </div>
+                            <small class="text-muted">@Model[j].Duration_album</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+
+
+
+
+@*<div class="row">
+    @{
+        for (int j = 0; j < Model.Count(); j++)
+        {
+            <div class="col-md-4">
+                <div class="card" style="height:300px">
+                    <a href="single.html"><img src="data:image;base64,@System.Convert.ToBase64String(Model[j].Cover_album, 0, Model[j].Cover_album.Length)" title="allbum-name"></a>
+                    <div class="card-body">
+                        <h6>@Model[j].Name_album</h6>
+                        @{ 
+                            int myDate = DateTime.Parse(Model[j].DateRelease.ToString()).Year;    
+                        }
+                        <small>Date of release (@myDate)</small>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                @Html.ActionLink("Listen", "GetSoundtracksAlbumFromAPI", "Soundtracks", new { id_album = Model[j].Id_album }, new { @class = "btn btn-primary" })
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>
+                            </div>
+                            <small class="text-muted">@Model[j].Duration_album</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>*@
+
+

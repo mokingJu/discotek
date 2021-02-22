@@ -1,0 +1,24 @@
+﻿@model List<WebApplicationTest.Models.Soundtrack>
+
+@{
+    ViewBag.Title = "GetSoundtracksAlbumFromAPI";
+}
+
+<h2>GetSoundtracksAlbumFromAPI</h2>
+
+<div>
+    @{
+
+        for (int j = 0; j < Model.Count(); j++)
+        {
+            <ul>
+                <li>@Model[j].Name_track</li>
+                <li>@Model[j].Duration_track</li>
+                <li>@Model[j].Numero_track</li>
+            </ul>
+            <audio controls>
+                <source src="~/audio/'@Model[j].Name_track'.mp3" type="audio/mp3" />
+            </audio>
+        }
+    }
+</div>
